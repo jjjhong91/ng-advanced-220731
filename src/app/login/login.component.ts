@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   login() {
    this.loginService.login(this.user).pipe(
     catchError((error: HttpErrorResponse) => {
-      alert(error.error.message);
+      alert(error.message);
       throw error;
     })
    ).subscribe((result) => {
