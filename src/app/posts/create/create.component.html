@@ -12,7 +12,7 @@
             />
           </fieldset>
           <ul *ngIf="post.controls.title.dirty && post.controls.title.errors">
-            <li *ngIf="post.controls.title.errors['required']">請輸入標題</li>
+            <li *ngIf="post.controls.title.errors?.['required']">請輸入標題</li>
           </ul>
           <fieldset class="form-group">
             <textarea
@@ -31,8 +31,8 @@
             ></textarea>
           </fieldset>
           <ul *ngIf="post.controls.body.dirty && post.controls.body.errors">
-            <li *ngIf="post.controls.body.errors['required']">請輸入內文</li>
-            <li *ngIf="post.controls.body.errors['minlength']">
+            <li *ngIf="post.controls.body.errors?.['required']">請輸入內文</li>
+            <li *ngIf="post.controls.body.errors?.['minlength']">
               內文至少
               {{ post.controls.body.errors['minlength'].requiredLength}}
               個字
