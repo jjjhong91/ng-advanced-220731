@@ -1,3 +1,4 @@
+import { AuthGuard } from './../auth.guard';
 import { PostsComponent } from './posts.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -20,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    component: CreateComponent
+    component: CreateComponent,
+    canActivate: [AuthGuard]
   },
 ];
 
