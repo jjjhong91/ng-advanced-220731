@@ -8,7 +8,7 @@
               class="form-control form-control-lg"
               type="text"
               placeholder="Post Title"
-              formControlName="title"
+              [formControl]="post.controls.title"
             />
           </fieldset>
           <ul *ngIf="post.controls.title.dirty && post.controls.title.errors">
@@ -19,7 +19,7 @@
               class="form-control"
               rows="3"
               placeholder="Description"
-              formControlName="description"
+              [formControl]="post.controls.description"
             ></textarea>
           </fieldset>
           <fieldset class="form-group">
@@ -27,7 +27,7 @@
               class="form-control"
               rows="8"
               placeholder="Post body"
-              formControlName="body"
+              [formControl]="post.controls.body"
             ></textarea>
           </fieldset>
           <ul *ngIf="post.controls.body.dirty && post.controls.body.errors">
