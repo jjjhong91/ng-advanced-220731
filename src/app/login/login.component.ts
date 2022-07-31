@@ -28,15 +28,26 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-   this.loginService.login(this.user).pipe(
-    catchError((error: HttpErrorResponse) => {
-      alert(error.message);
-      throw error;
-    })
-   ).subscribe((result) => {
-    localStorage.setItem('token', result?.user.token);
-    this.router.navigateByUrl(this.redirectUrl ?? '/');
-   });
+    this.loginService.login(this.user).subscribe({
+      next: result => {
+        localStorage.setItem('token', result?.user.token);
+        this.router.navigateByUrl(this.redirectUrl ?? '/');
+      },
+      error: (error:HttpErrorResponse) => {
+        alert(error.message);
+        throw error;
+      }
+    });
+
+  //  this.loginService.login(this.user).pipe(
+  //   catchError((error: HttpErrorResponse) => {
+  //     alert(error.message);
+  //     throw error;
+  //   })
+  //  ).subscribe((result) => {
+  //   localStorage.setItem('token', result?.user.token);
+  //   this.router.navigateByUrl(this.redirectUrl ?? '/');
+  //  });
   }
 
 }
